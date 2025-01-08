@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                 document.getElementById('activity-4').style.display = 'none';
+                  document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M21</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+             <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparación del ambiente y bienvenida a los estudiantes.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy exploraremos cómo compartir nuestros diseños 3D y trabajar con modelos de otras fuentes. Aprenderemos sobre diferentes formatos y cómo importar y exportar nuestros diseños en TinkerCAD. Prepárense para un viaje al mundo de la colaboración en 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero ver cómo se sienten hoy. Si están listos para diseñar, levanten el brazo derecho. Si necesitan un momento para enfocarse, pongan ambas manos en sus rodillas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por la oportunidad de explorar y aprender juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Nuestros objetivos para hoy son tres: 1. Conocer el formato STL para objetos 3D digitales. 2. Aprender a importar y exportar modelos 3D en TinkerCAD. 3. Modificar un modelo externo y exportarlo como STL."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Presentación de innovaciones en la creación y uso de archivos 3D.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy veremos cómo el uso de archivos 3D ha transformado muchas industrias. Les presento la plataforma 'Sketchfab', un lugar donde artistas y diseñadores comparten sus creaciones 3D. Esta plataforma no solo permite ver los modelos, sino también descargarlos para usarlos en otros proyectos. Sketchfab es un ejemplo de colaboración y creatividad en el mundo 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Video de Sketchfab".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Observen este video para ver cómo funciona Sketchfab. Noten la variedad de modelos disponibles, y cómo artistas y diseñadores de todo el mundo comparten sus trabajos. La posibilidad de compartir y descargar archivos 3D ha acelerado la creación de contenido y ha hecho el modelado 3D más accesible para todos.  Este tipo de plataformas son una muestra del poder de la colaboración y el intercambio de conocimientos."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Sketchfab".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Sketchfab nos muestra la importancia de compartir nuestros diseños y utilizar el trabajo de otros para avanzar en la creatividad.  Hoy, aprenderemos cómo importar y exportar archivos 3D en TinkerCAD, permitiéndonos colaborar y mejorar nuestros proyectos. La idea es que puedan usar sus propias creaciones en diferentes proyectos o mejorar diseños ajenos, al igual que lo hacen los artistas en Sketchfab."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 19 minutos</div>
+        <div class="subtitle">Exploración de formatos de archivo, importación y exportación en TinkerCAD.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción a los Formatos de Archivo 3D".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy exploraremos los formatos de archivo 3D. Así como los documentos de texto tienen formatos (.doc, .txt), los modelos 3D también los tienen.  Estos formatos son esenciales para compartir nuestros diseños y para asegurarnos de que se vean y funcionen correctamente en diferentes programas y dispositivos. Cada formato tiene características específicas, por lo que es importante conocer las diferencias entre ellos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "Formatos Comunes de Archivo 3D".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Existen varios formatos de archivo 3D, pero nos enfocaremos en los más comunes: STL, OBJ y GLB.  El formato STL (Stereolithography) es el más utilizado para la impresión 3D. Este formato solo guarda la geometría del modelo, es decir, su forma, pero no guarda información de color o texturas. OBJ (Object) es otro formato común que sí puede guardar información de color y texturas. GLB (Binary glTF) es un formato más moderno, que está diseñado para la web y es muy eficiente para la visualización en tiempo real.  Conocer las diferencias entre estos formatos es clave para saber cuál es el adecuado para cada necesidad."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (2 minutos):</strong> Proyectar Diapositiva 11 "El Formato STL en Detalle".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Como mencionamos, el formato STL es el estándar para la impresión 3D. Este formato representa la superficie de un objeto mediante una malla de triángulos.  Cada triángulo se define por tres vértices, y la unión de todos estos triángulos forma la superficie de nuestro modelo 3D.  A pesar de que no guarda información de color o textura, es el formato preferido por la mayoría de las impresoras 3D debido a su sencillez y eficiencia.  Al crear un archivo STL, nuestro diseño queda listo para que cualquier impresora 3D lo pueda leer y transformar en un objeto físico."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 12 "Ventajas y Desventajas del Formato STL".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El formato STL tiene ventajas como su simplicidad, tamaño de archivo reducido y amplia compatibilidad con programas de impresión 3D.  Sin embargo, también tiene desventajas, como no guardar información de color ni texturas, lo cual puede ser un problema si queremos un modelo muy detallado con texturas complejas.  También, si el archivo STL tiene errores en la malla, la impresora podría tener problemas, lo cual nos obliga a asegurarnos de que nuestros modelos sean sólidos y sin errores antes de guardarlos.  Conocer las limitaciones del formato STL nos ayuda a prepararnos mejor para el proceso de impresión 3D."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 13 "Importar Archivos 3D en TinkerCAD".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora aprenderemos a importar modelos 3D a TinkerCAD. En la esquina superior derecha, encontraremos la opción 'Importar'.  TinkerCAD admite varios formatos, incluyendo STL, OBJ y SVG.  Al importar un modelo, este aparecerá en el espacio de trabajo, donde podremos modificarlo y combinarlo con otros elementos.  La capacidad de importar archivos 3D nos permite trabajar con diseños de otras fuentes, lo cual es muy útil para crear nuevos proyectos y aprender de otras personas. Es como si pudiéramos traer objetos de otros mundos a nuestro espacio de trabajo en TinkerCAD."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 14 "Exportar Archivos 3D en TinkerCAD".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Así como podemos importar modelos 3D, también podemos exportarlos. En la esquina superior derecha, encontraremos la opción 'Exportar'. TinkerCAD nos permite guardar nuestros diseños en varios formatos, incluyendo STL, OBJ y GLB.  Al exportar un modelo como STL, este queda listo para la impresión 3D.  Al exportarlo en otros formatos, podremos usarlo en otras plataformas o programas.  Saber exportar nuestros diseños nos permite compartir nuestras creaciones con el mundo y usarlo en cualquier plataforma que deseemos."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 7 (1.5 minutos):</strong> Proyectar Diapositiva 15 "Explorando Recursos 3D en Línea".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Existen muchos sitios web donde podemos encontrar modelos 3D gratuitos o de pago. Un sitio muy popular es Thingiverse, donde podemos descargar modelos para impresión 3D. Es importante tener cuidado y asegurarnos de que los sitios que visitamos sean seguros y confiables. Siempre es mejor optar por sitios conocidos y con buena reputación.  Además, siempre es bueno revisar los comentarios y calificaciones de los modelos antes de descargarlos, para asegurarnos de que sean de buena calidad."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 8 (2 minutos):</strong> Proyectar Diapositiva 16 "Seguridad al Descargar Archivos 3D".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Al descargar archivos de internet, es fundamental ser muy cuidadosos. Asegúrense de que el sitio web sea seguro y confiable, evitando aquellos sitios que tengan publicidad excesiva o que pidan información personal innecesaria.  Siempre es preferible descargar archivos de sitios conocidos y revisados. También es buena idea utilizar un antivirus actualizado para evitar problemas.  La seguridad en línea es un tema muy importante, así que asegúrense de tomar todas las precauciones necesarias.  Recuerden que nuestra seguridad en el mundo digital es tan importante como nuestra seguridad en el mundo real."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 9 (2 minutos):</strong> Proyectar Diapositiva 17 "Modificar un Modelo Descargado".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una vez que hemos descargado e importado un archivo 3D a TinkerCAD, podemos modificarlo y combinarlo con otros elementos.  Podemos cambiar su tamaño, forma o agregarle nuevas partes, usando las herramientas que ya conocemos.  Esta es una forma muy efectiva de aprender nuevas técnicas y de darles nuestro propio toque a modelos ya existentes.  De hecho, muchos diseñadores utilizan esta técnica como base para sus creaciones. Al modificar un modelo existente, combinamos la creación propia con la inspiración de otros."</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 10 (1 minuto):</strong> Proyectar Diapositiva 18 "El Dato Curioso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Es curioso notar que el formato STL, que es tan importante para la impresión 3D, fue creado en 1987 por la empresa 3D Systems, la primera en vender impresoras 3D. En ese momento, el objetivo del formato era simplemente describir las formas 3D en términos de triángulos. Nadie imaginó que este formato se convertiría en el estándar de la impresión 3D.  Hoy en día, millones de objetos son impresos diariamente con este formato, demostrando el impacto que tuvo esta pequeña invención hace casi 40 años.  Es importante reconocer cómo una innovación tecnológica que parecía simple, puede tener un gran impacto en el mundo."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 11 (1 minuto):</strong> Proyectar Diapositiva 19 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos avanzado en nuestros objetivos de hoy.  Ahora conocen el formato STL para objetos 3D, saben importar y exportar modelos 3D en TinkerCAD y pueden modificar un modelo externo y exportarlo como STL. ¡Excelente trabajo, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🤸 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Actividad física para mejorar la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Salto de Felicidad".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer un ejercicio para recargar energía y motivación. Den cinco saltos en su lugar mientras dicen '¡Soy un genio!'. Esto nos ayudará a despertar nuestra mente y a prepararnos para la siguiente actividad con una actitud positiva."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 21 "Cronómetro - 1 minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Reflexión sobre el Salto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Muy bien! Este pequeño ejercicio de movimiento nos ayuda a aumentar la motivación y la positividad. Ahora, estamos listos para abordar el reto con toda nuestra energía y entusiasmo."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 5 minutos</div>
+        <div class="subtitle">Formación de equipos y organización de tareas para el Challenge.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Formación de Parejas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta misión, trabajen con el mismo compañero de la clase anterior. Tómense un momento para sentarse juntos."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 24 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Recoger Magic Tablets".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, un representante de cada equipo debe pasar por su Magic Tablet."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 26 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 27 "Planificación del Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, utilicen su tablero Kanban para organizar las tareas necesarias para el Challenge. Tienen dos minutos para definir las tareas, asignarlas a cada miembro del equipo y organizar su flujo de trabajo. Recuerden que una buena planificación es esencial para que todo salga bien, como cuando diseñan una coreografía para una presentación, deben practicar cada paso con cuidado."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 14.5 minutos</div>
+        <div class="subtitle">Modificación y exportación de modelos 3D en TinkerCAD.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 28 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de poner en práctica todo lo que hemos aprendido hoy. Vamos a descargar, modificar y exportar modelos 3D. Este reto pondrá a prueba su creatividad y habilidad técnica."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutes):</strong> Proyectar Diapositiva 29 "Modificación de Modelos 3D".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para este Challenge, cada equipo descargará un modelo 3D simple y gratuito de un sitio seguro como Thingiverse. Luego, lo importarán a TinkerCAD y lo modificarán con al menos 20 formas para darle una nueva función creativa.  Por ejemplo, pueden transformar una lámpara ordinaria en una lámpara con cola de Pikachu, un porta lápices en un robot, etc.  Los niveles de dificultad son:
+                 <ul>
+                    <li><strong>Rookie:</strong> Descargar un modelo 3D de Thingiverse, importarlo a TinkerCAD y modificarlo con al menos 10 formas.</li>
+                    <li><strong>Master:</strong> (+) Modificar el modelo original con al menos 20 formas, dándole una función creativa.</li>
+                    <li><strong>Hacker:</strong> (+)  Modificar el modelo con al menos 20 formas, darle una función creativa y exportar el modelo modificado en formato STL.</li>
+                 </ul>
+                 Recuerden que su objetivo es modificar un diseño existente y darle una nueva vida, fusionando su creatividad con el trabajo de otros.  Experimenten con diferentes formas y técnicas para lograr un resultado original y divertido."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 30 "Cronómetro - 10 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 31 "Presentación de Modelos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, cada equipo tendrá un minuto para presentar su modelo modificado a sus compañeros. Muestren qué modelo original eligieron, cómo lo transformaron y qué función creativa le dieron. Compartir sus diseños les ayudará a inspirar a otros y a celebrar la creatividad de todos."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 32 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 33 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos cumplido los objetivos de esta misión.  Conocen el formato STL para objetos 3D, aprendieron a importar y exportar modelos en TinkerCAD y han modificado un modelo externo y lo exportaron como un archivo STL.  ¡Gran trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 34 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han demostrado su habilidad para trabajar con modelos 3D y para transformarlos de manera creativa. Todos se llevan Mon-e por su esfuerzo. ¡Sigan explorando y creando!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Evaluación de la atención a través de una pregunta sorpresa.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 35 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora del Easter Egg. La siguiente diapositiva tiene una pregunta sobre un dato que mencioné durante el Brain Gym. Los tres primeros que levanten la mano y respondan correctamente ganarán Mon-e.  No digan la respuesta en voz alta, solo levanten la mano. ¿Listos?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Pregunta del Easter Egg".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¿En qué año fue creado el formato STL por la empresa 3D Systems?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 37 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, ven y dime la respuesta al oído... Ahora tú, dos... Y por último, el tres. La respuesta correcta es: ¡1987! ¡Felicidades a los ganadores, les toca Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Despedida y organización del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 38 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos terminado por hoy. Ahora, cada equipo pasará al frente para devolver su Magic Tablet. Asegúrense de dejar sus áreas de trabajo ordenadas. Recordemos que un espacio limpio refleja un buen trabajo en equipo. ¡Gracias por su esfuerzo y colaboración!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
